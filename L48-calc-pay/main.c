@@ -57,5 +57,4 @@ int main() {
     printf("Taxes: $%.2f\n", taxes);
     printf("Net: $%.2f\n", net_salary);
 
-
 }
