@@ -1,60 +1,36 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
-int main() {
-    // int mins = 3001;
-    unsigned int hours;
-    unsigned int normal_hours=40;
-    unsigned int ot_hours=0;
-    unsigned int base_hours=0;
-    printf("Hours worked:");
-    scanf("%d", &hours);
+#define MAX_TRIES 5
 
-    float base_pay = 12.0;
-    float ot_pay = 18.0;
-    float gross_salary;
-    float net_salary = 0;
-    float tax_rate_1 = 0.15, tax_bracket_1=150;
-    float tax_rate_2 = 0.20;
-    float tax_rate_3 = 0.25;
-    // float tax_bracket_1 = 300;
-    float tax_bracket_2 = 150;
+int main()
+{
+    time_t t;
+    srand((unsigned) time(&t));
+    printf("Time: %ld\n", t);
+    // printf("Time: %ld", t);
+    int randomNumber = rand() % 21;
+    printf("Random %d\n", randomNumber);
 
-    float taxes = 0.0;
-
-    if (hours > normal_hours){
-        ot_hours = hours - normal_hours;
-        base_hours = normal_hours;
-        printf("Base hours: %d\n", base_hours);
-        printf("OT hours: %d\n", ot_hours);
-    } else {
-        ot_hours = 0;
-        base_hours = hours;
-        printf("Base hours: %d\n", base_hours);
-        printf("OT hours: %d\n", ot_hours);
-    }
-
-    gross_salary = base_hours * base_pay + ot_hours * ot_pay;
-
-    printf("Gross: $%.2f\n", gross_salary);
-
-    if (gross_salary > (tax_bracket_1+tax_bracket_2))
+    unsigned int guess;
+    for (int i = 0; i < MAX_TRIES; i++)
     {
-        printf("Top\n");
-        taxes += 300*tax_rate_1;
-        taxes += 150*tax_rate_2;
-        taxes += (gross_salary - 300 - 150) * tax_rate_2;
-
-    } else if (gross_salary > tax_bracket_1)
-    {
-        printf("Mid\n");
-        taxes += 300*tax_rate_1;
-        taxes += (gross_salary-300)*tax_rate_2;
-    } else {
-        taxes += gross_salary*tax_rate_1;
-        printf("Low\n");
+        printf("%d tries remaining!\n", MAX_TRIES-i);
+        while (1) {
+            printf("Guess the number:");
+            scanf("%d", &guess);
+            printf("You guessed %d\n", guess);
+            if (guess > 20 || guess < 0){
+                continue;
+            }
+            break;
+        }
+        if (guess == randomNumber){
+            printf("SUCCESS!\n");
+            break;
+        } else {
+            printf("INCORRECT!\n");
+        }
     }
-    net_salary = gross_salary - taxes;
-    printf("Taxes: $%.2f\n", taxes);
-    printf("Net: $%.2f\n", net_salary);
-
 }
