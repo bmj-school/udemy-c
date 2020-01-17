@@ -9,7 +9,7 @@ int main()
     time_t t;
     srand((unsigned) time(&t));
     printf("Time: %ld\n", t);
-    // printf("Time: %ld", t);
+
     int randomNumber = rand() % 21;
     printf("Random %d\n", randomNumber);
 
