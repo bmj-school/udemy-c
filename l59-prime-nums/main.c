@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <math.h>
 #include <stdlib.h>
 
 #define MAX_NUM 300
@@ -18,6 +19,12 @@ int main()
                 primes[i]=num;
                 break;
             }
+
+            if (num / primes[i] <= primes[i]) {
+                printf("NOT PRIME (sqrt limit)!\n");
+                break;
+            }
+
             printf("%d/%d ",num, primes[i]);
             remainder = num%primes[i];
 
@@ -46,7 +53,6 @@ int main()
             // Can also skip even numbers
 
             // Ensure that p is not higher than square root of the prime
-            // sqrt(primes[i]);
 
         }
     }
