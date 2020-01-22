@@ -9,7 +9,7 @@ int main()
     char * p = multiple;
     for (i = 0; i<strlen(multiple); ++i)
     {
-        printf("multiple[%d]=%c, *(p+%d)=%c",
+        printf("multiple[%d]=%c, *(p+%d)=%c ",
             i, multiple[i],
             i, *(p+i));
         printf("&multiple[%d]=%p, p+%d=%p\n",

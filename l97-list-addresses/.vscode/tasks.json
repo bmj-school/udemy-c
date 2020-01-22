@@ -1,28 +1,20 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
+    "version": "0.1.0",
+    "isShellCommand": true,
+    "taskName": "Multiple_inline",
+    "showOutput": "always",
+    "command": "bash",
+    "suppressTaskName": false,
+    "args": ["-c"],
     "tasks": [
         {
-            "type": "shell",
-            "label": "gcc build active file",
-            "command": "/usr/bin/gcc",
+            "taskName": "gcc compile and run",
+            "suppressTaskName": true,
+            "isBuildCommand": true,
             "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "gcc ${file} -o ${fileDirname}/${fileBasenameNoExtension} && ./${fileBasenameNoExtension} "
             ],
-            "options": {
-                "cwd": "/usr/bin"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "problemMatcher": []
         }
     ]
 }
