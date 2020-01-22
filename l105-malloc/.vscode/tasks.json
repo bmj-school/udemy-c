@@ -1,0 +1,28 @@
+{
+    "version": "0.1.0",
+    "isShellCommand": true,
+    "taskName": "Multiple_inline",
+    "showOutput": "always",
+    "command": "bash",
+    "suppressTaskName": false,
+    "args": ["-c"],
+    "tasks": [
+        {
+            "taskName": "gcc compile and run",
+            "suppressTaskName": true,
+            "isBuildCommand": true,
+            "args": [
+                "gcc ${file} -o ${fileDirname}/${fileBasenameNoExtension}.out && ./${fileBasenameNoExtension}.out "
+            ],
+            "problemMatcher": []
+        },
+        {
+            "taskName": "gcc build as debug",
+            "suppressTaskName": true,
+            "isBuildCommand": true,
+            "args": [
+                "gcc ${file} -g -o ${fileDirname}/${fileBasenameNoExtension}.out && echo 'Compiled to ${fileBasenameNoExtension}.out'"
+            ],
+            "problemMatcher": []
+        }]
+}
