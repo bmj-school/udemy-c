@@ -12,7 +12,7 @@
             "suppressTaskName": true,
             "isBuildCommand": true,
             "args": [
-                "gcc ${file} -o ${fileDirname}/${fileBasenameNoExtension} && ./${fileBasenameNoExtension} "
+                "gcc ${file} -o ${fileDirname}/${fileBasenameNoExtension}.out && ./${fileBasenameNoExtension}.out "
             ],
             "problemMatcher": []
         }
