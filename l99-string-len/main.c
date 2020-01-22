@@ -32,6 +32,17 @@ int myStringLen(char *str)
     }
     return count;
 }
+
+int myStringLen2(const char *str)
+{
+    const char * end = str;
+    while(*end)
+    {
+        *end++;
+    }
+    return end - str;
+}
+
 int main()
 {
     char str1[] = "A 0 string to be copied";
@@ -40,7 +51,9 @@ int main()
     copyStringPtrWhile(str2, str1);
     printf("%s\n%s\n", str1, str2);
 
-    printf("'%s' has %i characters", str1, myStringLen(str1));
+    printf("'%s' has %i characters\n", str1, myStringLen(str1));
+
+    printf("V2: '%s' has %i characters\n", str1, myStringLen2(str1));
 
     return 0;
 }
