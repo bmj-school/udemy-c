@@ -4,10 +4,24 @@
 
 int main()
 {
-    char input[20];
-    char *str;
-    scanf("Enter:", &input);
-    // str = (char *) malloc(15 * sizeof(char));
+    // char input[20];
+    int numBytes;
+    char *str = NULL;
+    // char str[100];
+    // int i;
+
+    printf("Enter number of characters for memory:");
+    scanf("%i", &numBytes);
+
+    printf("\nEnter %d characters:", numBytes);
+
+    str = (char *)malloc(numBytes * sizeof(char));
+
+    if (str)
+    {
+        scanf("%s", str);
+        printf("Your string:%s with %d characters", str, (int)strlen(str));
+    }
     // strcpy(str, "hello");
     // printf("String = %s, Address = %p  %p\n", str, str, &str);
 

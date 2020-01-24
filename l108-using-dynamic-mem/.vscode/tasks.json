@@ -5,7 +5,9 @@
     "showOutput": "always",
     "command": "bash",
     "suppressTaskName": false,
-    "args": ["-c"],
+    "args": [
+        "-c"
+    ],
     "tasks": [
         {
             "taskName": "gcc compile and run",
@@ -19,10 +21,11 @@
         {
             "taskName": "gcc build as debug",
             "suppressTaskName": true,
-            "isBuildCommand": true,
+            "isBuildCommand": false,
             "args": [
                 "gcc ${file} -g -o ${fileDirname}/${fileBasenameNoExtension}.out && echo 'Compiled to ${fileBasenameNoExtension}.out'"
             ],
             "problemMatcher": []
-        }]
+        }
+    ]
 }
