@@ -2,31 +2,41 @@
 
 int main()
 {
+    struct time
+    {
+        int hours;
+        int minutes;
+        int seconds;
+    };
     struct date
     {
         int day;
-        int mon;
+        int month;
         int year;
     };
-
-    struct month
+    struct dateTime
     {
-        int numberDays;
-        char name[3];
+        struct date sdate;
+        struct time stime;
     };
 
-    struct date myDays[10]; // 10 dates
+    struct dateTime event;
+    struct dateTime event2 = { {2,1,2015}, {3,30,0} };
+    printf("%d-%d-%d %d:%d:%d", event2.sdate.day, event2.sdate.month, event2.sdate.year,
+    event2.stime.hours, event2.stime.minutes, event2.stime.seconds);
 
-    myDays[0].day = 16;
-    myDays[0].mon = 01;
-    myDays[0].year = 2020;
+    // Or, a struct inside a struct definition;
+    struct Time
+    {
+        struct Date
+        {
+            int day;
+            int month;
+            int year;
+        } dob;
 
-    myDays[1] = (struct date) {01,12,2019};
-
-    struct date myDays2[5] = {{1,2,1900}, {1,2,1900},{1,2,1900}};
-    for (int i=0; i<10;++i)
-        printf("%i %i %i\n", myDays[i].day, myDays[i].mon, myDays[i].year);
-
-    struct month aMonth = {31, {'J','A','N'}};
-
+        int hour;
+        int minutes;
+        int seconds;
+    };
 }
