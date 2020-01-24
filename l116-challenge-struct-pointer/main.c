@@ -19,6 +19,7 @@ void readitem(struct Item *pitem)
     printf("Enter item name:");
     scanf("%s", temp);
     pitem->itemName = (char *) malloc(strlen(temp + 1)); // Allocate mem
+
     strcpy(pitem->itemName, temp); // Copy name to allocated mem
     printf("\n");
     // free(temp);
