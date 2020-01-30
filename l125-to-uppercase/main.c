@@ -1,31 +1,67 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include <ctype.h>
+
 
 int main()
 {
-    FILE *fp = NULL;
+    FILE *fpOriginal = NULL;
+    FILE *fpTarget = NULL;
+
     int count=0;
     char c;
-    fp = fopen("file.txt", "r");
 
-    if (fp == NULL)
+    char printChar;
+    bool flgLower;
+
+    /* Open both files */
+    fpOriginal = fopen("file.txt", "r");
+    fpTarget = fopen("target.txt", "w");
+
+    if (fpOriginal == NULL)
     {
         perror("ERROR");
         return (-1);
     }
-    while ((c = fgetc(fp)) != EOF)
+    if (fpTarget == NULL)
     {
-        printf("Char:%c\n", c);
+        perror("ERROR");
+        return (-1);
+    }
+
+    while ((c = fgetc(fpOriginal)) != EOF)
+    {
+        printf("Char:%c", c);
         if (c == '\n') // NOTE: Need single quotes here!!!
         {
             printf("NEWLINE!");
             count++;
         }
+
+        // CONVERSION
+        if (islower(c))
+            flgLower = true;
+        else
+            flgLower = false;
+
+        if (flgLower)
+            printChar = c - 32;
+        else
+            printChar = c;
+
+        // LOGGING
+        printf(" [%i]", flgLower);
+        printf(" -> %c ", printChar);
+        printf("\n");
+
+        fputc(printChar, fpTarget);
     }
     printf("%d lines counted", count);
-    // fseek(fp, 0, SEEK_END);
 
-    // len = ftell(fp);
-    // fclose(fp);
-    // printf("%d bytes", len);
+
+
+    fclose(fpOriginal);
+    fclose(fpTarget);
     return 0;
 }
